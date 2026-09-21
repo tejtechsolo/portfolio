@@ -1,0 +1,8 @@
+import Link from 'next/link';
+import { posts } from '@/lib/data';
+import { Fade } from '@/components/motion';
+import { ArrowUpRight } from '@/components/icons';
+
+export default function Blog(){return <div className="section-pad pt-32"><div className="container"><Fade><p className="text-xs uppercase tracking-[.25em] text-cyan-300">My blog</p><h1 className="mt-3 text-5xl font-black tracking-[-.04em] md:text-6xl">Insights, <span className="text-gradient">tutorials & ideas.</span></h1><p className="mt-5 max-w-2xl text-slate-400">Notes from building products, learning new technology and working through real engineering problems.</p></Fade>
+<div className="mt-10 space-y-4">{posts.map((post,i)=><Fade key={post.slug} delay={i*.05}><Link href={`/blog/${post.slug}`} className="card card-hover group flex flex-col gap-5 rounded-2xl p-5 md:flex-row md:items-center"><div className="grid h-28 w-full shrink-0 place-items-center rounded-xl border border-white/10 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 md:w-48"><span className="text-3xl font-black text-white/15">{String(i+1).padStart(2,'0')}</span></div><div className="flex-1"><div className="flex flex-wrap gap-3 text-xs text-slate-500"><span className="text-cyan-300">{post.category}</span><span>{post.date}</span><span>{post.read} read</span></div><h2 className="mt-2 text-xl font-semibold group-hover:text-cyan-200">{post.title}</h2><p className="mt-2 text-sm leading-6 text-slate-500">A practical breakdown of lessons, patterns and decisions behind modern product development.</p></div><ArrowUpRight className="hidden text-slate-600 transition group-hover:text-white md:block"/></Link></Fade>)}</div>
+</div></div>}
