@@ -1,0 +1,10 @@
+import { skills } from '@/lib/data';
+import { Fade } from '@/components/motion';
+import { Code2, Database, Cloud, BrainCircuit, Layers3, Sparkles } from '@/components/icons';
+
+const icons=[Code2,Code2,Database,BrainCircuit,Cloud,Layers3];
+
+export default function Skills(){return <div className="section-pad pt-32"><div className="container"><Fade><p className="text-xs uppercase tracking-[.25em] text-cyan-300">My skills</p><h1 className="mt-3 text-5xl font-black tracking-[-.04em] md:text-6xl">Technology <span className="text-gradient">I work with.</span></h1><p className="mt-5 max-w-2xl text-slate-400">A practical stack for shipping modern, scalable products — from interface to infrastructure.</p></Fade>
+  <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{skills.map(([group,items],i)=>{const Icon=icons[i];return <Fade key={group} delay={i*.04} className="card card-hover rounded-2xl p-6"><div className="flex items-center gap-3"><div className="grid h-10 w-10 place-items-center rounded-xl bg-cyan-400/10 text-cyan-300"><Icon size={19}/></div><h2 className="font-semibold">{group}</h2></div><div className="mt-6 flex flex-wrap gap-2">{items.map(t=><span key={t} className="rounded-lg border border-white/8 bg-white/[.025] px-3 py-2 text-xs text-slate-300">{t}</span>)}</div></Fade>})}</div>
+  <Fade className="mt-6 rounded-3xl border border-violet-400/15 bg-gradient-to-r from-violet-500/10 to-cyan-400/5 p-8"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-center"><div><div className="flex items-center gap-2 text-violet-200"><Sparkles size={17}/> Always learning</div><h2 className="mt-2 text-2xl font-bold">Better tools → better products.</h2><p className="mt-2 max-w-xl text-sm leading-6 text-slate-500">I continuously explore new technologies and patterns to keep products maintainable, useful and enjoyable to use.</p></div><div className="text-5xl font-black text-white/10">{skills.flatMap(([,x])=>x).length}+</div></div></Fade>
+</div></div>}
